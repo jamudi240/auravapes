@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aura Vapes Luxury | Vapers Exclusivos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Plus+Jakarta+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #080808;
+            --card-bg: #121212;
+            --gold: #d4af37;
+            --gold-light: #f3e5ab;
+            --gold-dark: #aa8c2c;
+            --text-main: #f5f5f5;
+            --text-muted: #a0a0a0;
+            --white: #ffffff;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* Modal de Edad */
+        #age-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.96);
+            backdrop-filter: blur(12px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            padding: 20px;
+        }
+
+        .age-card {
+            background: var(--card-bg);
+            border: 1px solid var(--gold);
+            padding: 40px 30px;
+            border-radius: 16px;
+            text-align: center;
+            max-width: 420px;
+            width: 100%;
+            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.2);
+        }
+
+        .age-card h2 {
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        .age-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+
+        .btn-gold {
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+            color: var(--bg-color);
+            border: none;
+            padding: 14px 28px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: var(--transition);
+            width: 100%;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 10px;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-gold:hover {
+            background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 100%);
+            box-shadow: 0 0 25px rgba(212, 175, 55, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--text-muted);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 10px 20px;
+            font-size: 0.85rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: var(--transition);
+            width: 100%;
+        }
+
+        .btn-outline:hover {
+            color: var(--white);
+            border-color: var(--white);
+        }
+
+        /* Portada / Hero Section */
+        header {
+            min-height: 85vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.8), var(--bg-color)), url('Captura de pantalla 2026-10-25 184018.png') no-repeat center center/cover;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            position: relative;
+        }
+
+        .hero-badge {
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        header h1 {
+            font-family: 'Cinzel', serif;
+            color: var(--white);
+            font-size: 2.8rem;
+            letter-spacing: 3px;
+            margin-bottom: 15px;
+        }
+
+        header h1 span {
+            color: var(--gold);
+        }
+
+        header p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            max-width: 600px;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .btn-whatsapp-hero {
+            background: #25d366;
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: var(--transition);
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-whatsapp-hero:hover {
+            background: #20ba5a;
+            transform: translateY(-2px);
+        }
+
+        /* Contenido Principal */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-header h2 {
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* Cuadrícula de Productos */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 14px;
+            overflow: hidden;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-card:hover {
+            border-color: var(--gold);
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6), 0 0 20px rgba(212, 175, 55, 0.15);
+        }
+
+        .product-image-container {
+            width: 100%;
+            height: 240px;
+            background: #000;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .product-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .product-card:hover .product-image {
+            transform: scale(1.08);
+        }
+
+        .product-info {
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        .product-tag {
+            font-size: 0.75rem;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .product-name {
+            font-family: 'Cinzel', serif;
+            font-size: 1.25rem;
+            color: var(--white);
+            margin-bottom: 10px;
+        }
+
+        .product-desc {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            line-height: 1.5;
+            flex: 1;
+        }
+
+        .product-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .product-price {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--gold);
+        }
+
+        .btn-order-single {
+            background: transparent;
+            color: var(--gold);
+            border: 1px solid var(--gold);
+            padding: 8px 18px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        .btn-order-single:hover {
+            background: var(--gold);
+            color: var(--bg-color);
+        }
+
+        /* Botón Flotante de WhatsApp */
+        .floating-whatsapp {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background: #25d366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4);
+            z-index: 1000;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        .floating-whatsapp:hover {
+            transform: scale(1.1);
+            background: #20ba5a;
+        }
+
+        .floating-whatsapp svg {
+            width: 32px;
+            height: 32px;
+            fill: white;
+        }
+
+        /* Pie de página */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            background: #050505;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Modal Verificación de Edad -->
+    <div id="age-modal">
+        <div class="age-card">
+            <h2>Aura Vapes Luxury</h2>
+            <p>Este sitio web contiene productos exclusivos para adultos. Debes ser mayor de 18 años para ingresar.</p>
+            <button class="btn-gold" id="btn-accept">Soy mayor de 18 años</button>
+            <button class="btn-outline" id="btn-deny">Salir</button>
+        </div>
+    </div>
+
+    <!-- Portada / Hero Section -->
+    <header>
+        <div class="hero-badge">Exclusividad & Elegancia</div>
+        <h1>Aura Vapes <span>Luxury</span></h1>
+        <p>Descubre la máxima experiencia en vapeo con nuestros dispositivos HQD de 15,000 Puffs. Calidad superior, diseño prémium y sabores intensos.</p>
+        <div class="hero-buttons">
+            <a href="#catalogo" class="btn-gold" style="width: auto; padding: 14px 32px; margin: 0;">Ver Sabores Disponibles</a>
+            <a href="https://wa.me/584123503067?text=Hola%20Aura%20Vapes%20Luxury,%20quiero%20hacer%20un%20pedido." target="_blank" class="btn-whatsapp-hero">
+                Contactar por WhatsApp
+            </a>
+        </div>
+    </header>
+
+    <!-- Sección de Catálogo -->
+    <div class="container" id="catalogo">
+        <div class="section-header">
+            <h2>Colección HQD 15,000 Puffs</h2>
+            <p>Precio único: $20.00 USD c/u</p>
+        </div>
+
+        <div class="grid">
+            
+            <!-- Producto 1: Peach Ice -->
+            <div class="product-card">
+                <div class="product-image-container">
+                    <img src="Captura de pantalla 2026-10-25 184018.png" alt="Peach Ice" class="product-image">
+                </div>
+                <div class="product-info">
+                    <span class="product-tag">15000 Puffs • Dual Mesh</span>
+                    <h3 class="product-name">Peach Ice</h3>
+                    <p class="product-desc">Durazno dulce y jugoso con un toque refrescante de hielo en cada exhalación.</p>
+                    <div class="product-footer">
+                        <span class="product-price">$20.00</span>
+                        <a href="https://wa.me/584123503067?text=Hola%20Aura%20Vapes%20Luxury,%20quiero%20pedir%20el%20HQD%2015K%20Peach%20Ice%20($20)" target="_blank" class="btn-order-single">Pedir</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Producto 2: Watermelon Bubblegum -->
+            <div class="product-card">
+                <div class="product-image-container">
+                    <img src="Captura de pantalla 2026-10-25 184034.png" alt="Watermelon Bubblegum" class="product-image">
+                </div>
+                <div class="product-info">
+                    <span class="product-tag">15000 Puffs • Dual Mesh</span>
+                    <h3 class="product-name">Watermelon Bubblegum</h3>
+                    <p class="product-desc">La combinación perfecta y nostálgica entre sandía fresca y chicle dulce.</p>
+                    <div class="product-footer">
+                        <span class="product-price">$20.00</span>
+                        <a href="https://wa.me/584123503067?text=Hola%20Aura%20Vapes%20Luxury,%20quiero%20pedir%20el%20HQD%2015K%20Watermelon%20Bubblegum%20($20)" target="_blank" class="btn-order-single">Pedir</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Producto 3: Blue Razz Ice -->
+            <div class="product-card">
+                <div class="product-image-container">
+                    <img src="Captura de pantalla 2026-10-25 184045.png" alt="Blue Razz Ice" class="product-image">
+                </div>
+                <div class="product-info">
+                    <span class="product-tag">15000 Puffs • Dual Mesh</span>
+                    <h3 class="product-name">Blue Razz Ice</h3>
+                    <p class="product-desc">Frambuesas azules intensas acompañadas de un frescor gélido inigualable.</p>
+                    <div class="product-footer">
+                        <span class="product-price">$20.00</span>
+                        <a href="https://wa.me/584123503067?text=Hola%20Aura%20Vapes%20Luxury,%20quiero%20pedir%20el%20HQD%2015K%20Blue%20Razz%20Ice%20($20)" target="_blank" class="btn-order-single">Pedir</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Producto 4: Ice Mint -->
+            <div class="product-card">
+                <div class="product-image-container">
+                    <img src="Captura de pantalla 2026-10-25 184053.png" alt="Ice Mint" class="product-image">
+                </div>
+                <div class="product-info">
+                    <span class="product-tag">15000 Puffs • Dual Mesh</span>
+                    <h3 class="product-name">Ice Mint</h3>
+                    <p class="product-desc">Menta extra refrescante y pura diseñada para una sensación sumamente limpia.</p>
+                    <div class="product-footer">
+                        <span class="product-price">$20.00</span>
+                        <a href="https://wa.me/584123503067?text=Hola%20Aura%20Vapes%20Luxury,%20quiero%20pedir%20el%20HQD%2015K%20Ice%20Mint%20($20)" target="_blank" class="btn-order-single">Pedir</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Producto 5: Strawberry Watermelon -->
+            <div class="product-card">
+                <div class="product-image-container">
+                    <img src="Captura de pantalla 2026-10-25 184102.png" alt="Strawberry Watermelon" class="product-image">
+                </div>
+                <div class="product-info">
+                    <span class="product-tag">15000 Puffs • Dual Mesh</span>
+                    <h3 class="product-name">Strawberry Watermelon</h3>
+                    <p class="product-desc">Deliciosa mezcla jugosa y equilibrada de fresas maduras y sandía fresca.</p>
+                    <div class="product-footer">
+                        <span class="product-price">$20.00</span>
+                        <a href="https://wa.me/584123503067?text=Hola%20Aura%20Vapes%20Luxury,%20quiero%20pedir%20el%20HQD%2015K%20Strawberry%20Watermelon%20($20)" target="_blank" class="btn-order-single">Pedir</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Botón Flotante de WhatsApp -->
+    <a href="https://wa.me/584123503067?text=Hola%20Aura%20Vapes%20Luxury,%20quiero%20hacer%20un%20pedido." target="_blank" class="floating-whatsapp" title="Escríbenos por WhatsApp">
+        <svg viewBox="0 0 24 24">
+            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-1.98-.57-2.251-.297-.272-.621-.371-.869-.371s-.498.124-.72.372c-.222.248-1.12 1.096-1.368 1.319-.247.223-.495.248-.818.099-.323-.148-1.363-.502-2.597-1.605-1.036-.928-1.733-2.073-1.936-2.421-.202-.348-.022-.537.151-.71.155-.155.348-.403.522-.604.174-.201.233-.348.35-.582.118-.234.059-.441-.03-.615-.089-.174-.795-1.916-1.089-2.624-.288-.685-.582-.591-.798-.602s-.436-.011-.67-.011c-.234 0-.612.088-.934.441-.322.353-1.233 1.204-1.233 2.937s1.262 3.415 1.436 3.648c.174.233 2.482 3.791 6.012 5.316.841.363 1.498.58 2.012.744.846.27 1.616.232 2.227.141.685-.102 1.98-.809 2.257-1.59.277-.781.277-1.451.194-1.59z"/>
+        </svg>
+    </a>
+
+    <footer>
+        <p>&copy; 2026 Aura Vapes Luxury. Todos los derechos reservados. Prohibida su venta a menores de edad.</p>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const modal = document.getElementById("age-modal");
+            const btnAccept = document.getElementById("btn-accept");
+            const btnDeny = document.getElementById("btn-deny");
+
+            try {
+                if (localStorage.getItem("ageVerified") === "true") {
+                    modal.classList.add("hidden");
+                }
+            } catch(e) {}
+
+            btnAccept.addEventListener("click", () => {
+                try {
+                    localStorage.setItem("ageVerified", "true");
+                } catch(e) {}
+                modal.style.display = "none";
+                modal.classList.add("hidden");
+            });
+
+            btnDeny.addEventListener("click", () => {
+                alert("Lo sentimos, debes ser mayor de edad para ver este contenido.");
+                window.location.href = "https://www.google.com";
+            });
+        });
+    </script>
+</body>
+</html>
